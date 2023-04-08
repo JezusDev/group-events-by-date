@@ -1,5 +1,4 @@
 import fs from 'fs';
-import path from 'path';
 import { EventI, EventTypeT } from '../ifc';
 import dayjs from 'dayjs';
 var _ = require('lodash');
