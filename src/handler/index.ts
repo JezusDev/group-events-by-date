@@ -1,22 +1,23 @@
 import fs from 'fs';
 import { EventI, EventTypeT } from '../ifc';
 import dayjs from 'dayjs';
+import path from 'path'
 var _ = require('lodash');
 
 export class EventHandler {
     private data: EventI[] = [];
     result: Record<string, EventI[]> = {};
 
-    public fGroupEventsByDate(pathToJSON: string) {
+    public fGroupEventsByDate(pathToJSON: string, outPath: string) {
         try {
             this.fGetDataFromJson(pathToJSON);
-            this.fGetResult(this.data);
+            this.fGetResult(this.data, outPath);
         } catch (error) {
             console.log('Что-то пошло не так');
         }
     }
 
-    private fGetResult(data: EventI[]) {
+    private fGetResult(data: EventI[], outPath: string) {
         const aValidEvent = this.fGetValidData(data);
         for (let i = 0; i < aValidEvent.length; i++) {
             const vEvent = aValidEvent[i];
@@ -29,8 +30,8 @@ export class EventHandler {
             }
         }
         this.result = this.fSortResult(this.result);
-        fs.openSync('result.json', 'w');
-        fs.writeFileSync('result.json', JSON.stringify(this.result));
+        fs.openSync(path.resolve(__dirname, outPath), 'w');
+        fs.writeFileSync(path.resolve(__dirname, outPath), JSON.stringify(this.result));
     }
 
     private fSortResult(result: Record<string, EventI[]>) {

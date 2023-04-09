@@ -20,3 +20,10 @@ export interface GeneratingEventI {
   members: string[];
   place: string;
 }
+
+export interface TerminalParamsI {
+  from: string,
+  to: string,
+  entry: string,
+  out: string,
+}

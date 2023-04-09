@@ -11,8 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
+    "@types/optimist": "0.0.30",
     "dayjs": "^1.11.7",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "optimist": "^0.6.1"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",

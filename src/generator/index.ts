@@ -7,7 +7,7 @@ export class EventGenerator {
     result: GeneratingEventI[] = [];
     faker = faker;
 
-    fGenerateEvents(from: string | number | Date, to: string | number | Date) {
+    fGenerateEvents(from: string | number | Date, to: string | number | Date, entry: string) {
         const randomType = [
             ...Object.keys(EventTypeT),
             this.faker.lorem.word(7),
@@ -38,9 +38,9 @@ export class EventGenerator {
                 ],
             });
         }
-        fs.openSync('generating.json', 'w');
+        fs.openSync(entry, 'w');
         fs.writeFileSync(
-            'generating.json',
+            entry,
             JSON.stringify({ events: this.result })
         );
     }
@@ -52,5 +52,3 @@ export class EventGenerator {
 
 const generator = new EventGenerator();
 export { generator };
-
-generator.fGenerateEvents('01-04-2023', '08-04-2023');

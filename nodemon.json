@@ -2,5 +2,5 @@
     "watch": ["./src/**/*"],
     "ext": "ts,json",
     "ignore": ["src/**/*.spec.ts"],
-    "exec": "ts-node ./src/index.ts"
+    "exec": "ts-node ./src/index.ts --entry='./test/generating.json' --from='01.04.2023' --to='10.04.2023'"
 }
